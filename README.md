@@ -146,6 +146,4 @@ Contributors:
 - Karim Triki
 - Romaissa Benkerda
 - Ines Haoula
-```
 
-Make sure to replace `flowchart.png` with the actual filename of your flowchart image. This markdown will ensure that the image appears centered in the README file.

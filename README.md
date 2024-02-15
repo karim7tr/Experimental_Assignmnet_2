@@ -140,6 +140,6 @@ rosrun assignment2_exprob executor.py
 
 Contributors:
 - Karim Triki
-- Roumaissa Benkeredda
+- Roumaissa Benkredda
 - Ines Haouala
   

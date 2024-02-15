@@ -34,10 +34,6 @@ This project presents an autonomous navigation system tailored for a robot opera
 
 8. **Completion**: Upon achieving all goals or mission completion, the system gracefully shuts down.
 
-### Future Improvement
--Initially, one of the waypoints was not set correctly so the robot was not able to detect the marker. This posed a problem because we set the condition for the robot to complete all his tasks and return to wp0 is to strictly find all of the 4 markers. Instead it could be better to set the condition to 3 markers instead for example and also introduce a timer for the robot to search for the marker. If the robot exceed the time set, the marker could be set to found or not found. 
--The method used for the robot navigation is gmapping but other methods could be used such as: HectorSLAM or Cartographer. These are better optimized for real-time localization, mapping and dynamic environments.
--It is important to note the robot was able to find and detect the markers only because the waypoints were provided in advance. The waypoints are the approximate positions of the marker where it can be detected from the camera lidar field of view. Therefore, we should consider the scenario where the robot does not know in advance where the markers are placed. We can set the robot to look for markers while it is navigating the environment, but that would be computationally heavier and longer.
 
 ### Logic and Functioning
 
@@ -57,14 +53,6 @@ if detected_marker:
 ```
 
 By integrating these components and their respective logic, the project facilitates autonomous navigation, marker detection, and task execution, ensuring robust performance even in dynamic environments.
-
----
-
-## Flowchart
-
-<p align="center">
-  <img src="flowchart.png" alt="Flowchart" width="600">
-</p>
 
 ## Launch steps
 
@@ -135,6 +123,18 @@ roslaunch RP_interface RPlaunch.launch
 ```console
 rosrun assignment2_exprob executor.py
 ```
+---
+
+## Flowchart
+
+<p align="center">
+  <img src="flowchart.png" alt="Flowchart" width="600">
+</p>
+
+### Future Improvement
+-Initially, one of the waypoints was not set correctly so the robot was not able to detect the marker. This posed a problem because we set the condition for the robot to complete all his tasks and return to wp0 is to strictly find all of the 4 markers. Instead it could be better to set the condition to 3 markers instead for example and also introduce a timer for the robot to search for the marker. If the robot exceed the time set, the marker could be set to found or not found. 
+-The method used for the robot navigation is gmapping but other methods could be used such as: HectorSLAM or Cartographer. These are better optimized for real-time localization, mapping and dynamic environments.
+-It is important to note the robot was able to find and detect the markers only because the waypoints were provided in advance. The waypoints are the approximate positions of the marker where it can be detected from the camera lidar field of view. Therefore, we should consider the scenario where the robot does not know in advance where the markers are placed. We can set the robot to look for markers while it is navigating the environment, but that would be computationally heavier and longer.
 
 ---
 

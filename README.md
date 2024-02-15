@@ -2,49 +2,63 @@
 
 ## Project Overview
 
-This project implements an autonomous navigation system for a robot in a simulated environment using the Robot Operating System (ROS) and the ROSPlan framework. The system allows the robot to navigate to specific waypoints, detect ArUco markers, and perform high-level task planning.
+This project presents an autonomous navigation system tailored for a robot operating within a simulated environment, leveraging the Robot Operating System (ROS) and the ROSPlan framework. The system orchestrates the robot's movement to specific waypoints, integrates ArUco marker detection, and orchestrates high-level task planning.
 
 ### Components
 
-1. **ROS Nodes**: The project consists of several ROS nodes written in both C++ and Python.
+1. **ROS Nodes**: The project comprises several ROS nodes implemented in both C++ and Python.
 
-2. **ROSPlan Framework**: ROSPlan is utilized for high-level task planning and coordination of actions.
+2. **ROSPlan Framework**: Employing ROSPlan facilitates high-level task planning and action coordination.
 
-3. **Simulation Environment**: The robot operates in a simulated environment created using Gazebo.
+3. **Simulation Environment**: The robot operates within a simulated environment realized using Gazebo.
 
-4. **Motion Planning**: The robot employs a motion planning algorithm to navigate between waypoints.
+4. **Motion Planning**: To navigate between waypoints, the robot employs a motion planning algorithm.
 
-5. **ArUco Marker Detection**: ArUco markers are detected using sensors onboard the robot.
+5. **ArUco Marker Detection**: Utilizing onboard sensors, the robot detects ArUco markers.
 
 ### Workflow
 
-1. **Initialization**: The ROS nodes and necessary packages are initialized.
+1. **Initialization**: Initialization encompasses setting up ROS nodes and requisite packages.
 
-2. **Simulation Environment Setup**: The Gazebo simulation environment, including the robot and waypoints, is launched.
+2. **Simulation Environment Setup**: This step involves launching the Gazebo simulation environment, complete with the robot and predefined waypoints.
 
-3. **Motion Planning Initialization**: The motion planning node is initialized to enable navigation.
+3. **Motion Planning Initialization**: Initializing the motion planning node enables seamless navigation.
 
-4. **ArUco Marker Extraction**: The `ArUcoMarkerExtractor.py` script extracts ArUco marker information from Gazebo simulation data and publishes it for visualization.
+4. **ArUco Marker Extraction**: The `ArUcoMarkerExtractor.py` script extracts ArUco marker data from Gazebo simulation data and publishes it for visualization.
 
-5. **ROSPlan Action Interface**: The `MyActionInterface` class serves as an interface between ROSPlan and the motion planning system. It triggers motion planning actions based on high-level action dispatch messages from ROSPlan.
+5. **ROSPlan Action Interface**: The `MyActionInterface` class bridges ROSPlan with the motion planning system, executing motion planning actions based on high-level action dispatch messages.
 
-6. **Planning and Execution**: ROSPlan generates high-level plans specifying actions to achieve goals. The robot executes these plans, such as moving between waypoints and detecting markers.
+6. **Planning and Execution**: ROSPlan generates high-level plans specifying actions to fulfill goals, executed by the robot, including waypoint traversal and marker detection.
 
-7. **Feedback and Monitoring**: The system provides feedback on action execution status and monitors progress towards goals.
+7. **Feedback and Monitoring**: The system provides feedback on action execution status and monitors progress toward goals.
 
-8. **Completion**: Once all goals are achieved or the mission is completed, the system shuts down gracefully.
+8. **Completion**: Upon achieving all goals or mission completion, the system gracefully shuts down.
 
-### Logic
+### Future Improvement
+-Initially, one of the waypoints was not set correctly so the robot was not able to detect the marker. This posed a problem because we set the condition for the robot to complete all his tasks and return to wp0 is to strictly find all of the 4 markers. Instead it could be better to set the condition to 3 markers instead for example and also introduce a timer for the robot to search for the marker. If the robot exceed the time set, the marker could be set to found or not found. 
+-The method used for the robot navigation is gmapping but other methods could be used such as: HectorSLAM or Cartographer. These are better optimized for real-time localization, mapping and dynamic environments.
+-It is important to note the robot was able to find and detect the markers only because the waypoints were provided in advance. The waypoints are the approximate positions of the marker where it can be detected from the camera lidar field of view. Therefore, we should consider the scenario where the robot does not know in advance where the markers are placed. We can set the robot to look for markers while it is navigating the environment, but that would be computationally heavier and longer.
 
-- **High-Level Planning**: ROSPlan generates plans based on domain knowledge and the environment state.
+### Logic and Functioning
 
-- **Action Execution**: The `MyActionInterface` class translates high-level action dispatch messages into motion planning actions.
+The project logic intricately weaves together various components to enable autonomous navigation and task execution. ROSPlan's role in high-level planning, coupled with the `MyActionInterface` class orchestrating motion planning actions, ensures efficient goal fulfillment. Meanwhile, the Python script `detectmarker.py` focuses on detecting ArUco markers, crucial for environment perception and localization:
 
-- **Perception and Localization**: The robot perceives its environment and localizes itself using onboard sensors.
+```python
+# detectmarker.py
 
-- **Dynamic Environment Handling**: The system handles dynamic changes in the environment by updating its plans and state.
+# Detect ArUco marker
+detected_marker = detect_aruco_marker()
 
-- **Feedback and Adaptation**: Feedback on action execution status is used to adapt the system's behavior for successful task completion.
+# Process the detected marker
+if detected_marker:
+    # Update marker status and continue navigation
+    update_marker_status()
+    continue_navigation()
+```
+
+By integrating these components and their respective logic, the project facilitates autonomous navigation, marker detection, and task execution, ensuring robust performance even in dynamic environments.
+
+---
 
 ## Flowchart
 
@@ -54,23 +68,21 @@ This project implements an autonomous navigation system for a robot in a simulat
 
 ## Launch steps
 
-This project can be launched using a global launch file or by executing a series of commands in the terminal to start individual components. Below are the instructions for both methods.
+Launching the project can be accomplished using a global launch file or by manually starting individual components. Below are instructions for both methods.
 
 ### Quick Launch
 
-If you prefer a quick start, you can launch the entire project using a single launch file:
+For a streamlined start, execute the following command to launch the entire project using a single launch file:
 
 ```console
 roslaunch globallaunch.launch
 ```
 
-This command initializes all necessary nodes and brings up the simulation environment and the robot ready for marker detection and navigation tasks.
-
 ### Step-by-Step Launch
 
-For systems with lower performance, or if you wish to manually control the launch process, follow the steps below. Execute each command in a new terminal window, in the given order:
+For manual control or systems with lower performance, follow these steps to launch the project:
 
-1. Start the Gazebo simulation with the ROSBot in the assignment-specific environment:
+1. Start the Gazebo simulation with the ROSBot:
 
 ```console
 roslaunch rosbot_gazebo assignment2.launch
@@ -82,52 +94,52 @@ roslaunch rosbot_gazebo assignment2.launch
 roslaunch rosbot_bringup rosbot_gazebo.launch
 ```
 
-Alternatively, for steps 1 and 2, use the combined launch file:
+3. Alternatively, use the combined launch file for steps 1 and 2:
 
 ```console
 roslaunch fromassignment1.launch
 ```
 
-3. Launch the gmapping for SLAM:
+4. Launch gmapping for SLAM:
 
 ```console
 roslaunch assignment2_exprob gmapping.launch
 ```
 
-4. Start the move_base for autonomous navigation:
+5. Start move_base for autonomous navigation:
 
 ```console
 roslaunch assignment2_exprob move_base.launch
 ```
 
-5. Run the marker publisher node to publish ArUco marker positions:
+6. Run the marker publisher node:
 
 ```console
 rosrun aruco_ros marker_publish
 ```
 
-6. Execute the marker detection script:
+7. Execute the marker detection script:
 
 ```console
 rosrun assignment2_exprob detectmarker.py
 ```
 
-7. Launch the ROSPlan interface:
+8. Launch the ROSPlan interface:
 
 ```console
 roslaunch RP_interface RPlaunch.launch
 ```
 
-8. Start the executor script for handling detected markers and planning:
+9. Start the executor script:
 
 ```console
 rosrun assignment2_exprob executor.py
 ```
 
---- 
+---
 
 Contributors:
 - Karim Triki
-- Romaissa Benkerda
-- Ines Haoula
-
+- Roumaissa Benkeredda
+- Ines Haouala
+  

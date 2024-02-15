@@ -1,7 +1,7 @@
 # Experimental_Assignment_2
 ---
 
-ADVICE!!
+# ADVICE!!
 
 you can launch the whole project from globallaunch.launch
 However, if you dont have a titan laptop (most probably it is the case) run these commands below on your shell following the same order: 

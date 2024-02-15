@@ -1,21 +1,5 @@
 # Experimental_Assignment_2
 
-## ADVICE!!
-
-You can launch the whole project from `globallaunch.launch`. However, if you don't have a titan laptop (most probably the case), run these commands below on your shell following the same order:
-
-1. `roslaunch rosbot_gazebo assignment2.launch`
-2. `roslaunch rosbot_bringup rosbot_gazebo.launch`
-
-OR for 1) and 2), you can run this launch file: `fromassignment1.launch`
-
-3. `roslaunch assignment2_exprob gmapping.launch`
-4. `roslaunch assignment2_exprob move_base.launch`
-5. `rosrun aruco_ros marker_publish`
-6. `rosrun assignment2_exprob detectmarker.py`
-7. `roslaunch RP_interface RPlaunch.launch`
-8. `rosrun assignment2_exprob executor.py`
-
 ## Project Overview
 
 This project implements an autonomous navigation system for a robot in a simulated environment using the Robot Operating System (ROS) and the ROSPlan framework. The system allows the robot to navigate to specific waypoints, detect ArUco markers, and perform high-level task planning.

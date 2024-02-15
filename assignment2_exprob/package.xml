@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>assignment2_exprob</name>
+  <version>0.0.0</version>
+  <description>The assignment2_exprob package</description>
+
+  <!-- One maintainer tag required, multiple allowed, one person per tag -->
+  <maintainer email="bernard_maacaron@hotmail.com">Bernard Maacaron</maintainer>
+
+  <!-- One license tag required, multiple allowed, one license per tag -->
+  <!-- Commonly used license strings: -->
+  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <license>TODO</license>
+
+  <!-- Author tags are optional, multiple are allowed, one per tag -->
+  <!-- Authors do not have to be maintainers, but could be -->
+
+  <!-- The *depend tags are used to specify dependencies -->
+  <!-- Dependencies can be catkin packages or system dependencies -->
+  <!-- Use build_depend for packages you need at compile time -->
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>rosplan_planning_system</build_depend>
+  <build_depend>motion_plan</build_depend> <!-- Add your packages here -->
+  
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <build_export_depend>rosplan_planning_system</build_export_depend>
+  <build_export_depend>motion_plan</build_export_depend> <!-- Add your packages here -->
+
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>rosplan_planning_system</exec_depend>
+  <exec_depend>motion_plan</exec_depend> <!-- Add your packages here -->
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+  </export>
+</package>

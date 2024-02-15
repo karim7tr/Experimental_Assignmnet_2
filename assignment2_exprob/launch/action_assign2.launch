@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+	
+  <!-- START OF ARGUMENTS -->
+	<!-- these are the arguments you can pass this launch file, for example paused:=true -->
+    <!-- Planning ROSPlan arguments -->
+    <arg name="domain_path" default="$(find rosplan_planning_system)/common/domain_assignment2.pddl" />
+    <arg name="problem_path" default="$(find rosplan_planning_system)/common/problem_assignment2.pddl" />
+
+    <arg name="knowledge_base"   default="rosplan_knowledge_base" />
+    <arg name="problem_topic"    default="problem_instance" />
+    <arg name="planning_language" default="PDDL" /> <!-- Can be RDDL, PPDDL or PDDL -->
+
+  <!-- END OF ARGUMENTS -->
+
+<!-- IMPORTANT NOTE: THE ORDER OF THE NODES AND LAUNCHES MATTERS
+(WHY? I HAVE NO CLUE)-->
+
+    <node name="go_to_point" pkg="motion_plan" type="go_to_point_action.py" respawn="false"/>
+
+  <!-- Intended action -->
+    <node name="rosplan_interface_goto_waypoint" pkg="assignment2_exprob" type="myAction_assign2"
+    respawn="false" output="screen">
+      <param name="knowledge_base" value="$(arg knowledge_base)" />
+      <param name="pddl_action_name" value="goto_waypoint" />
+      <param name="action_dispatch_topic" value="/rosplan_plan_dispatcher/action_dispatch" />
+      <param name="action_feedback_topic" value="/rosplan_plan_dispatcher/action_feedback" />
+    </node>
+
+
+
+</launch>

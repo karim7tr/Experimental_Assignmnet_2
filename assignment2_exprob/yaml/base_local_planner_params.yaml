@@ -1,0 +1,41 @@
+# Local Trajectory Planner Parameters
+TrajectoryPlannerROS:
+  # Velocity Limits
+  max_vel_x: 1.8  # Maximum linear velocity in x-axis
+  min_vel_x: 0.6  # Minimum linear velocity in x-axis
+  max_vel_theta: 1.7  # Maximum angular velocity
+  min_vel_theta: -1.7  # Minimum angular velocity
+  min_in_place_vel_theta: -1.2  # Minimum in-place angular velocity
+  
+  # Acceleration Limits
+  acc_lim_x: 0.7  # Maximum linear acceleration
+  acc_lim_theta: 1.3  # Maximum angular acceleration
+  
+  # Goal Tolerances
+  yaw_goal_tolerance: 3.0  # Tolerance for orientation
+  xy_goal_tolerance: 0.4  # Tolerance for position
+  
+  # Simulation Settings
+  sim_time: 2.5  # Simulation time
+  vx_samples: 12  # Linear velocity samples
+  vtheta_samples: 45  # Angular velocity samples
+  
+  # Trajectory Scoring Parameters
+  meter_scoring: true  # Enable meter-based scoring
+  pdist_scale: 6.0  # Proportional distance cost scale
+  gdist_scale: 0.2  # Global distance cost scale
+  occdist_scale: 6.0  # Occupancy distance cost scale
+  heading_lookahead: 6.0  # Heading lookahead value
+  dwa: false  # Dynamic Window Approach flag
+  global_frame_id: map  # Global frame identifier
+  
+  # Oscillation Prevention
+  oscillation_reset_dist: 0.08  # Reset distance for oscillation
+  
+  # Differential-drive Robot Configurations
+  holonomic_robot: false  # Holonomic robot flag
+  max_vel_y: 0.1  # Maximum velocity in y-axis
+  min_vel_y: -0.1  # Minimum velocity in y-axis
+  acc_lim_y: 0.2  # Maximum acceleration in y-axis
+  vy_samples: 5  # Y-axis velocity samples
+

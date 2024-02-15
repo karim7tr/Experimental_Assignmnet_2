@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<launch>
+	
+  <!-- START OF ARGUMENTS -->
+	<!-- these are the arguments you can pass this launch file, for example paused:=true -->
+ <!-- END OF ARGUMENTS -->
+
+
+
+  <!-- START OF NODES -->
+  <!-- END OF NODES-->
+
+
+  <!-- START OF INCLUDES -->
+  <!-- include launch files -->
+  
+    <!-- ROSPlan Simulation-->
+    <include file="$(find rosplan_planning_system)/launch/includes/simulated_action.launch" >
+      <arg name="pddl_action_name" value="undock" />
+    </include>
+
+    <include file="$(find rosplan_planning_system)/launch/includes/simulated_action.launch" >
+      <arg name="pddl_action_name" value="dock" />
+    </include>
+
+    <include file="$(find rosplan_planning_system)/launch/includes/simulated_action.launch" >
+      <arg name="pddl_action_name" value="localise" />
+    </include>
+    
+    <include file="$(find rosplan_planning_system)/launch/includes/simulated_action.launch" >
+      <arg name="pddl_action_name" value="goto_waypoint" />
+    </include>
+
+  <!-- END OF INCLUDES -->
+
+</launch>

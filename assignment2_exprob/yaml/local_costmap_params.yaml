@@ -1,0 +1,18 @@
+# Local Costmap Parameters
+local_costmap:
+  global_frame: map  # Global frame
+  robot_base_frame: base_link  # Robot's base frame
+  update_frequency: 7.0  # Update frequency
+  publish_frequency: 3.0  # Publish frequency
+  static_map: false  # Static map flag
+  rolling_window: true  # Rolling window flag
+  width: 4.0  # Costmap width
+  height: 4.0  # Costmap height
+  resolution: 0.08  # Costmap resolution
+  transform_tolerance: 1.2  # Transform tolerance
+
+  # Inflation Layer Settings
+  inflation_layer:
+    inflation_radius: 1.3  # Inflation radius
+    cost_scaling_factor: 22  # Cost scaling factor
+

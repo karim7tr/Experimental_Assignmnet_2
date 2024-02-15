@@ -1,0 +1,18 @@
+# Global Costmap Parameters
+global_costmap:
+  global_frame: map  # Global frame
+  robot_base_frame: base_link  # Robot's base frame
+  update_frequency: 2.0  # Update frequency
+  publish_frequency: 1.0  # Publish frequency
+  static_map: true  # Static map flag
+  transform_tolerance: 1.5  # Transform tolerance
+  width: 50  # Costmap width
+  height: 50  # Costmap height
+  origin_x: -25.0  # Origin x-coordinate
+  origin_y: -25.0  # Origin y-coordinate
+
+  # Inflation Layer Settings
+  inflation_layer:
+    inflation_radius: 1.5  # Inflation radius
+    cost_scaling_factor: 25  # Cost scaling factor
+

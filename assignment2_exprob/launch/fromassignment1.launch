@@ -1,0 +1,15 @@
+<!-- assignement1 launch file: MarkerBasedNavigation_Full.launch -->
+
+<launch>
+
+  <!-- Launch the Gazebo assignment2 world with the specified world file -->
+ <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find rosbot_gazebo)/worlds/assignment2.world"/>
+  </include>
+
+  <!-- Launch the rosbot_bringup package -->
+  <include file="$(find rosbot_bringup)/launch/rosbot_gazebo.launch"/>
+
+ 
+
+</launch>

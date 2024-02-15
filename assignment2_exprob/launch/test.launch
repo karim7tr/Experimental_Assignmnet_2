@@ -1,0 +1,11 @@
+<!-- MarkerBasedNavigation.launch -->
+
+<launch>
+
+  <!-- Launch the Gazebo empty world with the specified world file -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+
+  <!-- Launch the rosbot_bringup package -->
+  <include file="$(find rosbot_bringup)/launch/rosbot_gazebo.launch"/>
+
+</launch>

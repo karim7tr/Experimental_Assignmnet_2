@@ -1,0 +1,11 @@
+#goal
+geometry_msgs/PoseStamped desiredposition
+
+---
+#feedback
+ 
+string feedback
+---
+#result
+geometry_msgs/Pose currentposition
+string return

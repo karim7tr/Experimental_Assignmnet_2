@@ -3,7 +3,10 @@
 
 # ADVICE!!
 
-you can launch the whole project from globallaunch.launch
+you can launch the whole project from globallaunch.launch by running the following command: 
+```console
+roslaunch assignment2_exprob globallaunch.launch
+```
 However, if you dont have a titan laptop (most probably it is the case) run these commands below on your shell following the same order: 
 
 1) Start the Gazebo simulation with the ROSBot in the assignment-specific environment:
